@@ -10,8 +10,8 @@ eg if your url is
 http://localhost:8080/genya
 
 the base url should also be changed to 
-        <script type="text/javascript">
+        
             window.dhis2 = window.dhis2 || {};
             dhis2.settings = dhis2.settings || {};
             dhis2.settings.baseUrl = 'genya';
-        </script>
+        
