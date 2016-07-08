@@ -80,7 +80,9 @@
             <d2-left-bar></d2-left-bar>
         </div>
 
+
         <div class="page" id="mainPage" ng-cloack style="padding-top:20px;">
+
             <div ng-if="loadStatus==true">{{loading}}</div>
             <div ng-view></div>
         </div>
@@ -89,3 +91,4 @@
 
 </body>
 </html>
+

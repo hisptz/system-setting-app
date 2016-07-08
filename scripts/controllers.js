@@ -8,12 +8,12 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 //Controller for settings page
 .controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q) {
         $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
-
-        $scope.showCurrentTriggeredMenu=function(key){
+         $scope.showCurrentTriggeredMenu=function(key){
             $scope.loadStatus=true;
             console.log(key);
             $scope.loading="Loading please wait....";
            var promises={indGroup:systemLayout.getIndicatorGroup(),
+
                       dataGroup:systemLayout.getDataElementGroup(),
                       orgLevel:systemLayout.getOrganisationUnitsLevels(),
                       currentSetting:systemLayout.getCurrentSystemSetting(),
@@ -26,16 +26,19 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                       optionCombo:systemLayout.getcategoryOptions(),
                       apps:systemLayout.getSystemApps()
                       }
+
             $timeout(function(){
-            $q.all(promises).then(function(data){
+      $q.all(promises).then(function(data){
             $scope.foundAssociation=systemLayout.getElementSWithOptionsForSelect(key,data.indGroup,data.dataGroup,data.orgLevel,
                  data.currentSetting,data.currentConfig,data.style,data.startPage,data.userRole,data.orgUnits,data.approvalLevel,data.optionCombo,data.apps);
                console.log($scope.foundAssociation);
             });
         $location.path(key);
         $scope.heading=key.substring('/'.length)+" Settings";
+
              $scope.loadStatus=false;
             },2000)
+
 
         }
         $scope.showCurrentTriggeredMenu('/General');
@@ -50,7 +53,8 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                 data:$scope.saveKey
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
-                    setHeaderDelayMessage( "System Setting Updated" );
+            setHeaderDelayMessage( "System Setting Updated" );
+
                 }else{
                     setHeaderDelayMessage( "System Configuration Updated" );
                 }
@@ -72,7 +76,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
              }).then(function(data){
                 if(data.data.httpStatus=="OK"){
                     setHeaderDelayMessage( "System Setting Updated" );
-                }else{
+              }else{
                     setHeaderDelayMessage( "System Configuration Updated" );
                 }
 
@@ -93,7 +97,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                 data:$scope.saveKey
              }).then(function(data){
                 if(data.data.httpStatus=="OK"){
-                    setHeaderDelayMessage( "System Setting Updated" );
+                      setHeaderDelayMessage( "System Setting Updated" );
                 }else{
                     setHeaderDelayMessage( "System Configuration Updated" );
                 }
@@ -111,6 +115,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
                     setHeaderDelayMessage( "System Setting Updated" );
+
                 }else{
                     setHeaderDelayMessage( "System Configuration Updated" );
                 }
@@ -134,7 +139,8 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                 data:{name:approvalLevel.name,orgUnitLevel:approvalLevel.level}
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
-                    setHeaderDelayMessage( "System Setting Updated" );
+            setHeaderDelayMessage( "System Setting Updated" );
+
                 }else{
                     setHeaderDelayMessage( "System Configuration Updated" );
                 }
@@ -151,8 +157,8 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                     url:'../../../api/dataApprovalLevels/'+$itemScope.level.id
                  }).then(function(data){
                     if(data.data.httpStatus=="OK"){
+                    setHeaderDelayMessage( "System Setting Updated" );
 
-                      setHeaderDelayMessage( "System Setting Updated" );
 
                     }else{
                         setHeaderDelayMessage( "System Configuration Updated" );

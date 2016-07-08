@@ -34,6 +34,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         Server:[
                             {"name":"Cache strategy","code":"","inputType":"select"},
                             {"name":"Number of database server CPUs","code":"","inputType":"select"},
+
                             //{"name":"System notifications email address","code":"","inputType":"text"},
                             {"name":"Server base URL","code":"","inputType":"text"}
                             //{"name":"Google Analytics (Universal Analytics) key","code":"","inputType":"text"}
@@ -92,6 +93,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                     //    ]
                     //},
                     {
+
                         Calendar:[
                             {"name":"Calendar","code":"","inputType":"select"},
                             {"name":"Date format","code":"","inputType":"select"}
@@ -177,7 +179,9 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                  var promise=$http.get(  '../../../dhis-web-commons/menu/getModules.action' )
                      .then(function(response){
                          var pageObject={}
+
                          var ObjectPage=
+
                          angular.forEach(response.data.modules,function(valueKey){
                              if(!valueKey.displayName){
                                  pageObject={"name":valueKey.name,"value":valueKey.namespace}
@@ -450,6 +454,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }
                         });
                     } if(value.name=='Start page'){
+
                         value['optionsSet']=apps;
                         value['options']=[];
                         value.savingKey="systemSettings/startModule";
@@ -473,6 +478,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }
                         })
 
+
                     }if(value.name=='Help page link'){
                         value.value=systemSetting.helpPageLink;
                         value.helpPageLink=systemSetting.helpPageLink;
@@ -494,7 +500,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.value=systemSetting.keyRequireAddToView;
                         value.keyRequireAddToView=systemSetting.keyRequireAddToView;
                         value.savingKey="systemSettings/keyRequireAddToView"
-                    } if(value.name=='Show Administrative unit hierarchy During Data Estimation'){
+                   } if(value.name=='Show Administrative unit hierarchy During Data Estimation'){
                         value.value=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.keyRequireShowAdministrativeHierarchyDataEstimation=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeHierarchyDataEstimation";
@@ -502,6 +508,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.value=systemSetting.keyObjectMenuBar;
                         value.keyObjectMenuBar=systemSetting.keyObjectMenuBar;
                         value.savingKey="systemSettings/keyObjectMenuBar";
+
 
                     }if(value.name=='Host name'){
                         value.value=systemSetting.keyEmailHostName;

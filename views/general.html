@@ -27,7 +27,9 @@
               </div>
              <div ng-if="content.inputType=='textarea'">
                  <label for="{{content.name}}">{{content.name }}</label>
+
                  <textarea class="form-control"  id="{{content.name}}" value="{{content.value}}" ng-model="selectedContent[$index]" ng-change="saveTextArea($index,content.savingKey)" ng-style="{'width':content.width,'height':content.height}"></textarea>
+
               </div>
               <div ng-if="content.inputType=='checkbox'">
                   <div class="checkbox">

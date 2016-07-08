@@ -1,11 +1,19 @@
 <div id="hideLeftBar">
+<<<<<<< HEAD
+=======
+    <a href="index.action" title="{{'show_main_menu'| translate}}" id="showMainMenuLink"><i class="fa fa-home leftBarIcon"></i></a>
+>>>>>>> 287f57f3845ea4865e04e24361a2f20fe4d6d8c0
     <a href="javascript:dhis2.leftBar.hideAnimated()" title="{{'hide_menu'| translate}}" id="hideMainMenuLink"><i class="fa fa-arrow-left leftBarIcon"></i></a>
     <a href="javascript:dhis2.leftBar.extendAnimated()" title="{{'extend_menu'| translate}}" id="extendMainMenuLink"><i class="fa fa-arrow-right leftBarIcon"></i></a>
 </div>
 <div style="padding-top: 20px">
 <div class="left-bar-menu" ng-controller="LeftBarMenuController" ng-repeat="menu in systemSettingMenu">
     <ul class="nav nav-pills nav-stacked"  ng-repeat="(key,val) in menu">
+<<<<<<< HEAD
         <li><a href ng-click="showCurrentTriggeredMenu('/'+key)" ng-init='General' style="color: #000000" ng-class="{'text-info':linkValue=='/'+key}">{{key}}</a></li>
+=======
+        <li><a href ng-click="showCurrentTriggeredMenu('/'+key)" ng-init='General' ng-class="{'text-info':linkValue=='/'+key}">{{key}}</a></li>
+>>>>>>> 287f57f3845ea4865e04e24361a2f20fe4d6d8c0
     </ul>
 </div>
 </div>
