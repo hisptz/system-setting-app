@@ -1,0 +1,84 @@
+<script>
+    dhis2.contextmenu.makeContextMenu({
+        menuId: 'contextMenu',
+        menuItemActiveClass: 'contextMenuItemActive'
+    });
+</script>
+<div id="contextMenu" class="contextMenu" style="width: 240px;">
+    <ul id="contextMenuItems" class="contextMenuItems">
+         <li data-enabled="canDelete"><a data-target-fn="removeDataSet"><i class="fa fa-trash-o"></i>&nbsp;&nbsp;Remove</a></li>
+    </ul>
+</div>
+<div class="col-md-10">
+    <div class="row">
+        <h4>{{heading}}</h4>
+    </div>
+     <div class="row">
+         <div class="form-group" ng-repeat="content in foundAssociation">
+             <div ng-if="content.inputType=='select'">
+                 <label for="{{content.name}}">{{content.name}}</label>
+                 <select class="form-control" id="{{content.name}}" ng-model="selectedContent[$index]" ng-change="saveSetting($index,content.savingKey)">
+                     <option ng-repeat="opt in content.options" value="{{opt.value}}" ng-selected="opt.selected==true">{{opt.name}}</option>
+                 </select>
+             </div>
+             <div ng-if="content.inputType=='text'">
+                 <label for="{{content.name}}">{{content.name }}</label>
+                 <input type="text" class="form-control"  id="{{content.name}}" value="{{content.value}}" ng-model="selectedContent[$index]" ng-change="saveText($index,content.savingKey)">
+              </div>
+             <div ng-if="content.inputType=='textarea'">
+                 <label for="{{content.name}}">{{content.name }}</label>
+                 <textarea class="form-control"  id="{{content.name}}" value="{{content.value}}" ng-model="selectedContent[$index]" ng-change="saveTextArea($index,content.savingKey)" ng-style="{'width':content.width,'height':content.height}"></textarea>
+              </div>
+              <div ng-if="content.inputType=='checkbox'">
+                  <div class="checkbox">
+                      <label><input type="checkbox" value="content.value" ng-checked="content.value==true" ng-checked="content.value!=false" ng-model="selectedContent[$index]" ng-change="saveCheckBox($index,content.savingKey)">{{content.name}}</label>
+                  </div>
+              </div>
+             <div ng-if="content.inputType=='tabs'">
+                 <ul class="nav nav-tabs">
+                     <li class="{{tab.start}}" ng-repeat="tab in content.tabs"><a href="#{{tab.code}}" data-toggle="tab">{{tab.name}}</a></li>
+                 </ul>
+                 <div class="tab-content">
+                     <div id="{{tab.code}}" ng-repeat="tab in content.tabs" class="tab-pane fade {{tab.start}}">
+                         <div ng-if="linkValue !='aprovalLevel'"><h3>{{tab.name}}</h3> <button type="button" class="btn btn-circle btn-raised btn-default pull-right" title="Add"><span class="glyphicon glyphicon-plus" ng-click="showForm('aprovalLevel')"></span></button></div>
+
+                         <table class="table" ng-if="linkValue !='aprovalLevel'">
+                             <thead>
+                             <tr>
+                                 <th>Name</th>
+                                 <th>Category option group set</th>
+                                 <th>Level</th>
+                             </tr>
+                             </thead>
+                             <tbody>
+                              <tr ng-repeat="level in tab.aprovalLevels" context-menu="menuOptions" context-menu-on="click" style="cursor: pointer">
+                                  <td>{{level.name}}</td>
+                                  <td></td>
+                                  <td>{{level.level}}</td>
+                              </tr>
+                             </tbody>
+                         </table>
+                         <div ng-if="linkValue =='aprovalLevel'">
+                             <h3>Create new approval level</h3>
+                             <form name="approvalForm" novalidate>
+                                 <div class="form-group">
+                                     <label for="administrativeLevels">Administrative unit level</label>
+                                     <select class="form-control" id="administrativeLevels" required="required" ng-model="selectedItem" ng-options="orgUnits.name for orgUnits in content.level">
+                                         <option value="" disabled>--Administrative Unit level--</option>
+                                     </select>
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="categoryOption">Category option group set</label>
+                                     <select class="form-control" id="categoryOption" placeholder="Select Administrative Units" ng-model="selectedOptions" ng-options="combo.name for combo in content.optionComb">
+                                     </select>
+                                 </div>
+                                 <button ng-click="sendApprovalLevel(selectedItem,selectedOptions)" type="submit" class="btn btn-primary">Save</button>
+                                 <button type="submit" class="btn btn-default" ng-click="hideForm('approvalHide')">Cancel</button>
+                             </form>
+                         </div>
+                    </div>
+              </div>
+            </div>
+         </div>
+     </div>
+</div>
