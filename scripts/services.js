@@ -66,20 +66,20 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                     //        {"name":"Email sender","code":"","inputType":"text"}
                     //    ]
                     //},
-                    {
-                        Access:[
-                            {"name":"Self registration account user role","code":"","inputType":"select"},
-                            //{"name":"Do not require recapture for self registration","code":"","inputType":"checkbox"},
-                            {"name":"Self registration account Administrative unit","code":"","inputType":"select"},
-                            //{"name":"Enable user account recovery","code":"","inputType":"checkbox"},
-                            //{"name":"Allow users to grant own user roles","code":"","inputType":"checkbox"},
-                            {"name":"Allow assigning object to related objects during add or update","code":"","inputType":"checkbox"},
-                            {"name":"Require user account password change","code":"","inputType":"select"}
-                            //{"name":"OpenID provider","code":"","inputType":"text"},
-                            //{"name":"OpenID provider label","code":"","inputType":"text"}
-                            //{"name":"CORS whitelist","code":"","inputType":"text"}
-                        ]
-                    },
+                    //{
+                    //    Access:[
+                    //        {"name":"Self registration account user role","code":"","inputType":"select"},
+                    //        {"name":"Do not require recapture for self registration","code":"","inputType":"checkbox"},
+                    //        {"name":"Self registration account Administrative unit","code":"","inputType":"select"},
+                    //        {"name":"Enable user account recovery","code":"","inputType":"checkbox"},
+                    //        {"name":"Allow users to grant own user roles","code":"","inputType":"checkbox"},
+                    //        {"name":"Allow assigning object to related objects during add or update","code":"","inputType":"checkbox"},
+                    //        {"name":"Require user account password change","code":"","inputType":"select"},
+                    //        {"name":"OpenID provider","code":"","inputType":"text"},
+                    //        {"name":"OpenID provider label","code":"","inputType":"text"},
+                    //        {"name":"CORS whitelist","code":"","inputType":"text"}
+                    //    ]
+                    //},
                     //{
                     //    Approval:[
                     //        {"name":"Hide unapproved data in analytics","code":"","inputType":"checkbox"},
