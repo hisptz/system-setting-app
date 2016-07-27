@@ -33,7 +33,7 @@
               </div>
               <div ng-if="content.inputType=='checkbox'">
                   <div class="checkbox">
-                      <label><input type="checkbox" value="content.value" ng-checked="content.value==true" ng-checked="content.value!=false" ng-model="selectedContent[$index]" ng-change="saveCheckBox($index,content.savingKey)">{{content.name}}</label>
+                      <label><input type="checkbox" value="content.value" ng-checked="content.value=='true'" ng-checked="content.value!='false'" ng-model="selectedContent[$index]" ng-change="saveCheckBox($index,content.savingKey)">{{content.name}}</label>
                   </div>
               </div>
              <div ng-if="content.inputType=='tabs'">

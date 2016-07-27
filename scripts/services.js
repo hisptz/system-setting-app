@@ -55,6 +55,25 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
                             //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
                         ]
+                    },{
+                        DataEntry:[
+                            //{"name":"Application title","code":"","inputType":"text"},
+                            //{"name":"Application introduction","code":"","inputType":"textarea"},
+                            //{"name":"Application notification","code":"","inputType":"textarea"},
+                            //{"name":"Application left-side footer","code":"","inputType":"textarea"},
+                            //{"name":"Application right-side footer","code":"","inputType":"textarea"},
+                            //{"name":"Style","code":"","inputType":"select"},
+                            {"name":"Type of Financial Year for Data Entry","code":"","inputType":"select"},
+                            {"name":"Look up Table Sorting Order","code":"","inputType":"select"},
+                            {"name":"Multi-administrative Unit selection behaviour","code":"","inputType":"checkbox"},
+                            {"name":"Data entry form filter variable","code":"","inputType":"select"},
+                            //{"name":"Help page link","code":"","inputType":"text"},
+                            //{"name":"Flag","code":"","inputType":"select"},
+                            {"name":"Enable or disable locking of data entry form","code":"","inputType":"checkbox"}
+                            //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
+                            //{"name":"Customer top menu logo","code":"","inputType":"file"},
+                            //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
+                        ]
                     },
                     //{
                     //    Email:[
@@ -504,7 +523,17 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.value=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.keyRequireShowAdministrativeHierarchyDataEstimation=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeHierarchyDataEstimation";
-                    }if(value.name=='Set ARDS menu bar'){
+                    }
+                    if(value.name=='Multi-administrative Unit selection behaviour'){
+                        value.value=systemSetting.keyRequireShowAdministrativeUnitSelection;
+                        value.keyRequireShowAdministrativeUnitSelection=systemSetting.keyRequireShowAdministrativeUnitSelection;
+                        value.savingKey="systemSettings/keyRequireShowAdministrativeUnitSelection";
+                    }if(value.name=='Enable or disable locking of data entry form'){
+                        value.value=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
+                        value.keyRequireEnableDisableDataEntryFormLocking=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
+                        value.savingKey="systemSettings/keyRequireEnableDisableDataEntryFormLocking";
+                    }
+                    if(value.name=='Set ARDS menu bar'){
                         value.value=systemSetting.keyObjectMenuBar;
                         value.keyObjectMenuBar=systemSetting.keyObjectMenuBar;
                         value.savingKey="systemSettings/keyObjectMenuBar";
@@ -526,6 +555,46 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }else{
                                 ops.selected=false;
                                 ops.keyEmailPort=ops.value;
+                            }
+                        });
+                    }if(value.name=='Type of Financial Year for Data Entry'){
+                        value['options'].push({"name":"FinancialApril","value":"April","selected":false}
+                            ,{"name":"FinancialJuly","value":"July","selected":false}
+                            ,{"name":"FinancialOctober","value":"October","selected":false});
+                        value.savingKey="systemSettings/financialYearType";
+                        angular.forEach(value.options,function(ops){
+                            if(ops.value==systemSetting.financialYearType){
+                                ops.selected=true;
+                                ops.financialYearType=ops.value;
+                            }else{
+                                ops.selected=false;
+                                ops.financialYearType=ops.value;
+                            }
+                        });
+                    }if(value.name=='Look up Table Sorting Order'){
+                        value['options'].push({"name":"Ascending","value":"asc","selected":false}
+                            ,{"name":"Descending","value":"desc","selected":false});
+                        value.savingKey="systemSettings/lookUpTableSorting";
+                        angular.forEach(value.options,function(ops){
+                            if(ops.value==systemSetting.lookUpTableSorting){
+                                ops.selected=true;
+                                ops.lookUpTableSorting=ops.value;
+                            }else{
+                                ops.selected=false;
+                                ops.lookUpTableSorting=ops.value;
+                            }
+                        });
+                    }if(value.name=='Data entry form filter variable'){
+                        value['options'].push({"name":"Entry","value":"Entry","selected":false}
+                            ,{"name":"Section","value":"Section","selected":false});
+                        value.savingKey="systemSettings/dataEntryFilterValiable";
+                        angular.forEach(value.options,function(ops){
+                            if(ops.value==systemSetting.dataEntryFilterValiable){
+                                ops.selected=true;
+                                ops.dataEntryFilterValiable=ops.value;
+                            }else{
+                                ops.selected=false;
+                                ops.dataEntryFilterValiable=ops.value;
                             }
                         });
                     }if(value.name=='Username'){
