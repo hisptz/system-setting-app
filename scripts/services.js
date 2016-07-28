@@ -6,6 +6,25 @@
 
 var systemSettingServices = angular.module('systemSettingServices', ['ngResource'])
 /*service for local db */
+    .factory('LoginHttpInterceptor', function ($q, $window) {
+        return {
+            response: function (response) {
+                // do something on success
+                if (response.headers()['content-type'] === "text/html;charset=UTF-8") {
+
+                    if (response.data.indexOf("loginPage") != -1) {
+                        $window.location.href = "../../../"
+                        return $q.reject(response);
+                    }
+                }
+                return response;
+            },
+            responseError: function (response) {
+                // do something on error
+                return $q.reject(response);
+            }
+        };
+    })
     .service("systemSettingCurrent",function($resource,$http,$q){
         return {
 

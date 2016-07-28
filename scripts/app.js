@@ -28,7 +28,7 @@ var systemSetting = angular.module('systemSetting',
 
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
+        $httpProvider.interceptors.push('LoginHttpInterceptor');
         $routeProvider.when('/', {
             templateUrl:'views/general.html',
             controller: 'GeneralController'
@@ -42,4 +42,4 @@ var systemSetting = angular.module('systemSetting',
         $translateProvider.preferredLanguage('en');
         $translateProvider.useSanitizeValueStrategy('escaped');
         $translateProvider.useLoader('i18nLoader');
-    });
+    })
