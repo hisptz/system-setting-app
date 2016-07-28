@@ -66,7 +66,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             {"name":"Type of Financial Year for Data Entry","code":"","inputType":"select"},
                             {"name":"Look up Table Sorting Order","code":"","inputType":"select"},
                             {"name":"Multi-administrative Unit selection behaviour","code":"","inputType":"checkbox"},
-                            {"name":"Data entry form filter variable","code":"","inputType":"select"},
+                            {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
                             {"name":"Enable or disable locking of data entry form","code":"","inputType":"checkbox"}
@@ -585,18 +585,9 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }
                         });
                     }if(value.name=='Data entry form filter variable'){
-                        value['options'].push({"name":"Entry","value":"Entry","selected":false}
-                            ,{"name":"Section","value":"Section","selected":false});
-                        value.savingKey="systemSettings/dataEntryFilterValiable";
-                        angular.forEach(value.options,function(ops){
-                            if(ops.value==systemSetting.dataEntryFilterValiable){
-                                ops.selected=true;
-                                ops.dataEntryFilterValiable=ops.value;
-                            }else{
-                                ops.selected=false;
-                                ops.dataEntryFilterValiable=ops.value;
-                            }
-                        });
+                        value.value=systemSetting.dataEntryFilterValiable;
+                        value.dataEntryFilterValiable=systemSetting.dataEntryFilterValiable;
+                        value.savingKey="systemSettings/dataEntryFilterValiable"
                     }if(value.name=='Username'){
                         value.value=systemSetting.keyEmailUsername;
                         value.keyEmailUsername=systemSetting.keyEmailUsername;
