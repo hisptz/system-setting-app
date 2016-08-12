@@ -84,7 +84,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             //{"name":"Style","code":"","inputType":"select"},
                             {"name":"Type of Financial Year for Data Entry","code":"","inputType":"select"},
                             {"name":"Look up Table Sorting Order","code":"","inputType":"select"},
-                            {"name":"Multi-administrative Unit selection behaviour","code":"","inputType":"checkbox"},
+                            {"name":"Show classifying Multi subunits entry forms in form selection","code":"","inputType":"checkbox"},
                             {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
@@ -543,7 +543,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.keyRequireShowAdministrativeHierarchyDataEstimation=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeHierarchyDataEstimation";
                     }
-                    if(value.name=='Multi-administrative Unit selection behaviour'){
+                    if(value.name=='Show classifying Multi subunits entry forms in form selection'){
                         value.value=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.keyRequireShowAdministrativeUnitSelection=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeUnitSelection";
@@ -579,7 +579,8 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                     }if(value.name=='Type of Financial Year for Data Entry'){
                         value['options'].push({"name":"FinancialApril","value":"April","selected":false}
                             ,{"name":"FinancialJuly","value":"July","selected":false}
-                            ,{"name":"FinancialOctober","value":"October","selected":false});
+                            ,{"name":"FinancialOctober","value":"October","selected":false},
+                             {"name":"Calender Year","value":"Yearly","selected":false});
                         value.savingKey="systemSettings/financialYearType";
                         angular.forEach(value.options,function(ops){
                             if(ops.value==systemSetting.financialYearType){
