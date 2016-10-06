@@ -107,7 +107,11 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             });
         }
         $scope.saveCheckBox=function(keyNum,SaveKey){
+            if($scope.selectedContent[keyNum]==undefined){ //If it is checked
+                $scope.selectedContent[keyNum]=false;
+            }
             $scope.saveKey=$scope.selectedContent[keyNum];
+            console.log(keyNum+" "+$scope.saveKey);
               $http({
                 method:'POST',
                 url:'../../../api/'+SaveKey+'?value='+$scope.saveKey,

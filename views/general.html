@@ -12,9 +12,10 @@
 <div class="col-md-10">
     <div class="row">
         <h4>{{heading}}</h4>
+
     </div>
      <div class="row">
-         <div class="form-group" ng-repeat="content in foundAssociation">
+         <div class="form-group" ng-repeat="content in foundAssociation track by $index">
              <div ng-if="content.inputType=='select'">
                  <label for="{{content.name}}">{{content.name}}</label>
                  <select class="form-control" id="{{content.name}}" ng-model="selectedContent[$index]" ng-change="saveSetting($index,content.savingKey)">
@@ -33,8 +34,9 @@
               </div>
               <div ng-if="content.inputType=='checkbox'">
                   <div class="checkbox">
-                      <label><input type="checkbox" value="content.value" ng-checked="content.value=='true'" ng-checked="content.value!='false'" ng-model="selectedContent[$index]" ng-change="saveCheckBox($index,content.savingKey)">{{content.name}}</label>
+                      <label><input type="checkbox" value="content.value" name="value" ng-checked="content.value=='true'" ng-checked="content.value!='false'" ng-model="selectedContent[$index]" ng-click="saveCheckBox($index,content.savingKey)">{{content.name}} {{content.value}}</label>
                   </div>
+
               </div>
              <div ng-if="content.inputType=='tabs'">
                  <ul class="nav nav-tabs">
