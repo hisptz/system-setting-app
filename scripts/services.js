@@ -88,7 +88,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
-                            {"name":"Lock data entry forms for past financial years( 2 months after)","code":"","inputType":"checkbox"}
+                            {"name":"Lock data entry forms when created report exist or it's already 2 month past selected financial year","code":"","inputType":"checkbox"}
                             //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
                             //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
