@@ -84,7 +84,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             //{"name":"Style","code":"","inputType":"select"},
                             {"name":"Type of Financial Year for Data Entry","code":"","inputType":"select"},
                             {"name":"Look up Table Sorting Order","code":"","inputType":"select"},
-                            {"name":"Show classifying Multi subunits entry forms in form selection","code":"","inputType":"checkbox"},
+                            {"name":"Differential forms with multiple sub-units from the rest in form selection(show 'Sub administration units' text)","code":"","inputType":"checkbox"},
                             {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
