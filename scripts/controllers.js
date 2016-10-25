@@ -6,11 +6,14 @@
 var systemSettingControllers = angular.module('systemSettingControllers', [])
 
 //Controller for settings page
-.controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q) {
+.controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q,$routeParams) {
         $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
+         $scope.menuDetails='/General';
          $scope.showCurrentTriggeredMenu=function(key){
+            $scope.menuID=$routeParams.key;
             $scope.loadStatus=true;
             console.log(key);
+            console.log($scope.menuID);
             $scope.loading="Loading please wait....";
            var promises={indGroup:systemLayout.getIndicatorGroup(),
 
@@ -41,7 +44,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 
 
         }
-        $scope.showCurrentTriggeredMenu('/General');
+        $scope.showCurrentTriggeredMenu($scope.menuDetails);
 }).controller('GeneralController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$interval) {
         $scope.selectedContent=[];
         $http.defaults.headers.post["Content-Type"] = "text/plain";

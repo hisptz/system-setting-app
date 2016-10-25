@@ -18,8 +18,8 @@ var systemSetting = angular.module('systemSetting',
                      'd2Controllers',
                      'angularLocalStorage', 
                      'pascalprecht.translate',
-                     'd2HeaderBar',
-                      'ngCsv',
+                     'd2HeaderBar', 
+                     'ngCsv',
                      'sticky'])
               
 .value('DHIS2URL', '../../..')
@@ -29,7 +29,7 @@ var systemSetting = angular.module('systemSetting',
         $httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
         $httpProvider.interceptors.push('LoginHttpInterceptor');
-        $routeProvider.when('/', {
+        $routeProvider.when('/:menuID', {
             templateUrl:'views/general.html',
             controller: 'GeneralController'
         }).when('/Generals',{
