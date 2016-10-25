@@ -8,9 +8,9 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 //Controller for settings page
 .controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q,$routeParams) {
         $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
-         $scope.menuDetails='/General';
+         $scope.menuID='/General';
          $scope.showCurrentTriggeredMenu=function(key){
-            $scope.menuID=$routeParams.key;
+            $scope.menuID=$routeParams.menuID;
             $scope.loadStatus=true;
             console.log(key);
             console.log($scope.menuID);
@@ -44,7 +44,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 
 
         }
-        $scope.showCurrentTriggeredMenu($scope.menuDetails);
+        $scope.showCurrentTriggeredMenu($scope.menuID);
 }).controller('GeneralController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$interval) {
         $scope.selectedContent=[];
         $http.defaults.headers.post["Content-Type"] = "text/plain";
