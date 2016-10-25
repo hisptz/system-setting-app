@@ -88,7 +88,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
-                            {"name":"Lock data entry forms when created report exist or it's already 2 month past selected financial year","code":"","inputType":"checkbox"}
+                            {"name":"Lock data entry forms when created report using it exist or it's already 2 month past selected financial year","code":"","inputType":"checkbox"}
                             //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
                             //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
@@ -543,11 +543,11 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.keyRequireShowAdministrativeHierarchyDataEstimation=systemSetting.keyRequireShowAdministrativeHierarchyDataEstimation;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeHierarchyDataEstimation";
                     }
-                    if(value.name=='Show classifying Multi subunits entry forms in form selection'){
+                    if(value.name=="Differential forms with multiple sub-units from the rest in form selection(show 'Sub administration units' text)"){
                         value.value=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.keyRequireShowAdministrativeUnitSelection=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeUnitSelection";
-                    }if(value.name=='Lock data entry forms for past financial years( 2 months after)'){
+                    }if(value.name=="Lock data entry forms when created report using it exist or it's already 2 month past selected financial year"){
                         value.value=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
                         value.keyRequireEnableDisableDataEntryFormLocking=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
                         value.savingKey="systemSettings/keyRequireEnableDisableDataEntryFormLocking";
