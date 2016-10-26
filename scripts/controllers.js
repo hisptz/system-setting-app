@@ -7,13 +7,10 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 
 //Controller for settings page
 .controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q,$routeParams) {
-        $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
-         $scope.menuID='/General';
+         $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
          $scope.showCurrentTriggeredMenu=function(key){
-            $scope.menuID=$routeParams.menuID;
             $scope.loadStatus=true;
             console.log(key);
-            console.log($scope.menuID);
             $scope.loading="Loading please wait....";
            var promises={indGroup:systemLayout.getIndicatorGroup(),
 
@@ -30,22 +27,29 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
                       apps:systemLayout.getSystemApps()
                       }
 
-            $timeout(function(){
-      $q.all(promises).then(function(data){
+        $timeout(function(){
+        $q.all(promises).then(function(data){
             $scope.foundAssociation=systemLayout.getElementSWithOptionsForSelect(key,data.indGroup,data.dataGroup,data.orgLevel,
                  data.currentSetting,data.currentConfig,data.style,data.startPage,data.userRole,data.orgUnits,data.approvalLevel,data.optionCombo,data.apps);
                console.log($scope.foundAssociation);
             });
         $location.path(key);
         $scope.heading=key.substring('/'.length)+" Settings";
-
-             $scope.loadStatus=false;
+        $scope.loadStatus=false;
             },2000)
 
 
         }
+        //$scope.menuID='/'+$routeParams.menuID;
+        //$scope.showCurrentTriggeredMenu('/General');
+}).controller('GeneralController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$interval,$routeParams) {
+        console.log($routeParams);
+        if($routeParams.menuID==undefined){
+            $routeParams.menuID='General';
+        }
+        $scope.menuID='/'+$routeParams.menuID;
+        console.log( $scope.menuID);
         $scope.showCurrentTriggeredMenu($scope.menuID);
-}).controller('GeneralController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$interval) {
         $scope.selectedContent=[];
         $http.defaults.headers.post["Content-Type"] = "text/plain";
         $scope.saveSetting=function(keyNum,SaveKey){

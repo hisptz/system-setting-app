@@ -32,7 +32,7 @@ var systemSetting = angular.module('systemSetting',
         $routeProvider.when('/:menuID', {
             templateUrl:'views/general.html',
             controller: 'GeneralController'
-        }).when('/Generals',{
+        }).when('/',{
             templateUrl:'views/general.html',
             controller: 'GeneralController'
         }).otherwise({
