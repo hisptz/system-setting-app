@@ -1,4 +1,4 @@
-# systemSettingApp
+# system-setting-app
 
 This involve the revamping of the dhis system setting app according to your requirement,
 Language used are HTML5,Angular js and CSS
