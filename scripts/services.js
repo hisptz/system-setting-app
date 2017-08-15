@@ -88,7 +88,8 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             {"name":"Data entry form filter variable","code":"","inputType":"text"},
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
-                            {"name":"Lock data entry forms when created report using it exist or it's already 2 month past selected financial year","code":"","inputType":"checkbox"}
+                            {"name":"Lock data entry forms after the related reports are created","code":"","inputType":"checkbox"},
+                            {"name":"Lock data entry forms after the fiscal year end","code":"","inputType":"select"}
                             //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
                             //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
@@ -259,7 +260,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
              getSystemUserRole:function(){
                  var def = $q.defer();
                  var userRole = [];
-                 var promise=$http.get(  '/api/userRoles.json?fields=id,displayName&paging=false&order=displayName:asc')
+                 var promise=$http.get(  '../../../api/userRoles.json?fields=id,displayName&paging=false&order=displayName:asc')
                      .then(function(response){
                          angular.forEach(response.data.userRoles,function(valueKey){
                              userRole.push({"name":valueKey.displayName,"value":valueKey.id});
@@ -547,10 +548,25 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.value=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.keyRequireShowAdministrativeUnitSelection=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeUnitSelection";
-                    }if(value.name=="Lock data entry forms when created report using it exist or it's already 2 month past selected financial year"){
+                    }if(value.name=="Lock data entry forms after the related reports are created"){
                         value.value=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
                         value.keyRequireEnableDisableDataEntryFormLocking=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
                         value.savingKey="systemSettings/keyRequireEnableDisableDataEntryFormLocking";
+                    }
+                    if(value.name=="Lock data entry forms after the fiscal year end"){
+                        value['options'].push({"name":"1 Month","value":"onemonth","selected":false}
+                            ,{"name":"3 Month","value":"threemonth","selected":false}
+                            ,{"name":"4 Month","value":"fourmonth","selected":false});
+                        value.savingKey="systemSettings/keyRequiredToLockDataEntryAfterFiscalYearEnd";
+                        angular.forEach(value.options,function(ops){
+                            if(ops.value==systemSetting.keyRequiredToLockDataEntryAfterFiscalYearEnd){
+                                ops.selected=true;
+                                ops.keyRequiredToLockDataEntryAfterFiscalYearEnd=ops.value;
+                            }else{
+                                ops.selected=false;
+                                ops.keyRequiredToLockDataEntryAfterFiscalYearEnd=ops.value;
+                            }
+                        });
                     }
                     if(value.name=='Set ARDS menu bar'){
                         value.value=systemSetting.keyObjectMenuBar;
