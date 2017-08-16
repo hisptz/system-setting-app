@@ -554,9 +554,10 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.savingKey="systemSettings/keyRequireEnableDisableDataEntryFormLocking";
                     }
                     if(value.name=="Lock data entry forms after the fiscal year end"){
-                        value['options'].push({"name":"1 Month","value":"onemonth","selected":false}
-                            ,{"name":"3 Month","value":"threemonth","selected":false}
-                            ,{"name":"4 Month","value":"fourmonth","selected":false});
+                        value['options'].push({"name":"0 Month","value":"0","selected":false},{"name":"1 Month","value":"1","selected":false},{"name":"2 Month","value":"2","selected":false}
+                            ,{"name":"3 Month","value":"3","selected":false},{"name":"4 Month","value":"4","selected":false},{"name":"5 Month","value":"5","selected":false},{"name":"6 Month","value":"6","selected":false}
+                            ,{"name":"7 Month","value":"7","selected":false},{"name":"8 Month","value":"8","selected":false},{"name":"9 Month","value":"9","selected":false},
+                            {"name":"10 Month","value":"10","selected":false},{"name":"11 Month","value":"11","selected":false},{"name":"12 Month","value":"12","selected":false});
                         value.savingKey="systemSettings/keyRequiredToLockDataEntryAfterFiscalYearEnd";
                         angular.forEach(value.options,function(ops){
                             if(ops.value==systemSetting.keyRequiredToLockDataEntryAfterFiscalYearEnd){
