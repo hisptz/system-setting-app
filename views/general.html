@@ -26,6 +26,10 @@
                  <label for="{{content.name}}">{{content.name }}</label>
                  <input type="text" class="form-control"  id="{{content.name}}" value="{{content.value}}" ng-model="selectedContent[$index]" ng-change="saveText($index,content.savingKey)">
               </div>
+             <div ng-if="content.inputType=='number'">
+                 <label for="{{content.name}}">{{content.name }}</label>
+                 <input type="number" min="1" class="form-control"  id="{{content.name}}" value="{{content.value}}" ng-model="selectedContent[$index]" ng-change="saveText($index,content.savingKey)">
+             </div>
              <div ng-if="content.inputType=='textarea'">
                  <label for="{{content.name}}">{{content.name }}</label>
 
