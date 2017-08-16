@@ -549,21 +549,21 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.keyRequireShowAdministrativeUnitSelection=systemSetting.keyRequireShowAdministrativeUnitSelection;
                         value.savingKey="systemSettings/keyRequireShowAdministrativeUnitSelection";
                     }if(value.name=="Lock data entry forms after the related reports are created"){
-                        value.value=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
-                        value.keyRequireEnableDisableDataEntryFormLocking=systemSetting.keyRequireEnableDisableDataEntryFormLocking;
-                        value.savingKey="systemSettings/keyRequireEnableDisableDataEntryFormLocking";
+                        value.value=systemSetting.shouldLockEntryFormBasedOnReportCreation;
+                        value.shouldLockEntryFormBasedOnReportCreation=systemSetting.shouldLockEntryFormBasedOnReportCreation;
+                        value.savingKey="systemSettings/shouldLockEntryFormBasedOnReportCreation";
                     }
                     if(value.name=="Lock data entry forms after the fiscal year end"){
                         value['options'].push({"name":"No","value":"-1","selected":false},{"name":"Immediate","value":"0","selected":false},{"name":"1 Month After","value":"1","selected":false},{"name":"2 Month After","value":"2","selected":false}
                             ,{"name":"3 Month After","value":"3","selected":false},{"name":"4 Month After","value":"4","selected":false},{"name":"5 Month After","value":"5","selected":false});
-                        value.savingKey="systemSettings/keyRequiredToLockDataEntryAfterFiscalYearEnd";
+                        value.savingKey="systemSettings/numberOfMonthAfterEndOfFinancialYearToLockEntryForm";
                         angular.forEach(value.options,function(ops){
-                            if(ops.value==systemSetting.keyRequiredToLockDataEntryAfterFiscalYearEnd){
+                            if(ops.value==systemSetting.numberOfMonthAfterEndOfFinancialYearToLockEntryForm){
                                 ops.selected=true;
-                                ops.keyRequiredToLockDataEntryAfterFiscalYearEnd=ops.value;
+                                ops.numberOfMonthAfterEndOfFinancialYearToLockEntryForm=ops.value;
                             }else{
                                 ops.selected=false;
-                                ops.keyRequiredToLockDataEntryAfterFiscalYearEnd=ops.value;
+                                ops.numberOfMonthAfterEndOfFinancialYearToLockEntryForm=ops.value;
                             }
                         });
                     }
@@ -620,9 +620,9 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }
                         });
                     }if(value.name=='Data entry form filter variable'){
-                        value.value=systemSetting.dataEntryFilterValiable;
-                        value.dataEntryFilterValiable=systemSetting.dataEntryFilterValiable;
-                        value.savingKey="systemSettings/dataEntryFilterValiable"
+                        value.value=systemSetting.dataEntryFilterVariable;
+                        value.dataEntryFilterVariable=systemSetting.dataEntryFilterVariable;
+                        value.savingKey="systemSettings/dataEntryFilterVariable"
                     }if(value.name=='Username'){
                         value.value=systemSetting.keyEmailUsername;
                         value.keyEmailUsername=systemSetting.keyEmailUsername;
