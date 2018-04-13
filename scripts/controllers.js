@@ -56,7 +56,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             $scope.saveKey=$scope.selectedContent[keyNum];
             $http({
                 method:'POST',
-                url:'../../../api/'+SaveKey,
+                url:'../../../api/27/'+SaveKey,
                 data:$scope.saveKey
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
@@ -78,7 +78,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             }
             $http({
                 method:postType,
-                url:'../../../api/'+SaveKey,
+                url:'../../../api/27/'+SaveKey,
                 data:$scope.saveKey
              }).then(function(data){
                 if(data.data.httpStatus=="OK"){
@@ -100,7 +100,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             }
             $http({
                 method:postType,
-                url:'../../../api/'+SaveKey,
+                url:'../../../api/27/'+SaveKey,
                 data:$scope.saveKey
              }).then(function(data){
                 if(data.data.httpStatus=="OK"){
@@ -121,7 +121,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             console.log(keyNum+" "+$scope.saveKey);
               $http({
                 method:'POST',
-                url:'../../../api/'+SaveKey+'?value='+$scope.saveKey,
+                url:'../../../api/27/'+SaveKey+'?value='+$scope.saveKey,
                 data:$scope.saveKey
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
@@ -146,7 +146,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             $http.defaults.headers.post["Content-Type"] = "application/json";
             $http({
                 method:'POST',
-                url:'../../../api/dataApprovalLevels',
+                url:'../../../api/27/dataApprovalLevels',
                 data:{name:approvalLevel.name,orgUnitLevel:approvalLevel.level}
             }).then(function(data){
                 if(data.data.httpStatus=="OK"){
@@ -165,7 +165,7 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
             ['<i class="fa fa-trash">&nbsp;&nbsp;Remove</i>', function ($itemScope) {
                 $http({
                     method:'DELETE',
-                    url:'../../../api/dataApprovalLevels/'+$itemScope.level.id
+                    url:'../../../api/27/dataApprovalLevels/'+$itemScope.level.id
                  }).then(function(data){
                     if(data.data.httpStatus=="OK"){
                     setHeaderDelayMessage( "System Setting Updated" );
