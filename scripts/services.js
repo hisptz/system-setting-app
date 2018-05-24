@@ -89,6 +89,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             //{"name":"Help page link","code":"","inputType":"text"},
                             //{"name":"Flag","code":"","inputType":"select"},
                             {"name":"Lock data entry forms after the related reports are created","code":"","inputType":"checkbox"},
+                            {"name":"Turn on estimation process","code":"TURN_OFF_ESTIMATION_PROCESS","inputType":"checkbox"},
                             {"name":"Lock data entry forms after the fiscal year end","code":"","inputType":"select"}
                             //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
@@ -553,6 +554,11 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.shouldLockEntryFormBasedOnReportCreation=systemSetting.shouldLockEntryFormBasedOnReportCreation;
                         value.savingKey="systemSettings/shouldLockEntryFormBasedOnReportCreation";
                     }
+                    if(value.name=="Turn off estimation process"){
+                         value.value=systemSetting.turnOffestimationProcess;
+                         value.turnOffestimationProcess=systemSetting.turnOffestimationProcess;
+                         value.savingKey="systemSettings/turnOffestimationProcess";
+                     }
                     if(value.name=="Lock data entry forms after the fiscal year end"){
                         value['options'].push({"name":"No","value":"-1","selected":false},{"name":"Immediate","value":"0","selected":false},{"name":"1 Month After","value":"1","selected":false},{"name":"2 Month After","value":"2","selected":false}
                             ,{"name":"3 Month After","value":"3","selected":false},{"name":"4 Month After","value":"4","selected":false},{"name":"5 Month After","value":"5","selected":false});
