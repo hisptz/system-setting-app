@@ -554,7 +554,7 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                         value.shouldLockEntryFormBasedOnReportCreation=systemSetting.shouldLockEntryFormBasedOnReportCreation;
                         value.savingKey="systemSettings/shouldLockEntryFormBasedOnReportCreation";
                     }
-                    if(value.name=="Turn off estimation process"){
+                    if(value.name=="Turn on estimation process"){
                          value.value=systemSetting.turnOffestimationProcess;
                          value.turnOffestimationProcess=systemSetting.turnOffestimationProcess;
                          value.savingKey="systemSettings/turnOffestimationProcess";
