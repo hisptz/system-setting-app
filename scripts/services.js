@@ -90,7 +90,9 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             //{"name":"Flag","code":"","inputType":"select"},
                             {"name":"Lock data entry forms after the related reports are created","code":"","inputType":"checkbox"},
                             {"name":"Turn on estimation process","code":"TURN_OFF_ESTIMATION_PROCESS","inputType":"checkbox"},
-                            {"name":"Lock data entry forms after the fiscal year end","code":"","inputType":"select"}
+                            {"name":"Allow data entry future period","code":"DATA_ENTRY_FUTURE_PERIOD","inputType":"checkbox"},
+                            {"name":"Lock data entry forms after the fiscal year end","code":"","inputType":"select"},
+                            {"name":"Lock report creation after the fiscal year end","code":"","inputType":"select"}
                             //{"name":"Show Administrative unit hierarchy During Data Estimation","code":"","inputType":"checkbox"}
                             //{"name":"Customer top menu logo","code":"","inputType":"file"},
                             //{"name":"Set ARDS menu bar","code":"","inputType":"textarea","width":"500px","height":"300px"},
@@ -559,6 +561,11 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                          value.turnOffestimationProcess=systemSetting.turnOffestimationProcess;
                          value.savingKey="systemSettings/turnOffestimationProcess";
                      }
+                    if(value.name=="Allow data entry future period"){
+                        value.value=systemSetting.allowDataEntryFuturePeriod;
+                        value.allowDataEntryFuturePeriod=systemSetting.allowDataEntryFuturePeriod;
+                        value.savingKey="systemSettings/allowDataEntryFuturePeriod";
+                    }
                     if(value.name=="Lock data entry forms after the fiscal year end"){
                         value['options'].push({"name":"No","value":"-1","selected":false},{"name":"Immediate","value":"0","selected":false},{"name":"1 Month After","value":"1","selected":false},{"name":"2 Month After","value":"2","selected":false}
                             ,{"name":"3 Month After","value":"3","selected":false},{"name":"4 Month After","value":"4","selected":false},{"name":"5 Month After","value":"5","selected":false});
@@ -570,6 +577,20 @@ var systemSettingServices = angular.module('systemSettingServices', ['ngResource
                             }else{
                                 ops.selected=false;
                                 ops.numberOfMonthAfterEndOfFinancialYearToLockEntryForm=ops.value;
+                            }
+                        });
+                    }
+                    if(value.name=="Lock report creation after the fiscal year end"){
+                        value['options'].push({"name":"No","value":"-1","selected":false},{"name":"Immediate","value":"0","selected":false},{"name":"1 Month After","value":"1","selected":false},{"name":"2 Month After","value":"2","selected":false}
+                            ,{"name":"3 Month After","value":"3","selected":false},{"name":"4 Month After","value":"4","selected":false},{"name":"5 Month After","value":"5","selected":false});
+                        value.savingKey="systemSettings/numberOfMonthAfterEndOfFinancialYearToLockReportCreation";
+                        angular.forEach(value.options,function(ops){
+                            if(ops.value==systemSetting.numberOfMonthAfterEndOfFinancialYearToLockReportCreation){
+                                ops.selected=true;
+                                ops.numberOfMonthAfterEndOfFinancialYearToLockReportCreation=ops.value;
+                            }else{
+                                ops.selected=false;
+                                ops.numberOfMonthAfterEndOfFinancialYearToLockReportCreation=ops.value;
                             }
                         });
                     }
