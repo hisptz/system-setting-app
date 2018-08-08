@@ -9,36 +9,44 @@ var systemSettingControllers = angular.module('systemSettingControllers', [])
 .controller('MainController', function($scope,$http, storage, $timeout,$window, ModalService,systemLayout,$location,$q,$routeParams) {
          $scope.systemSettingMenu=systemLayout.getGeneralSystemLayout();
          $scope.showCurrentTriggeredMenu=function(key){
-            $scope.loadStatus=true;
-            console.log(key);
-            $scope.loading="Loading please wait....";
-           var promises={indGroup:systemLayout.getIndicatorGroup(),
+            if($scope.disabled){
+              //$scope.loading="Loading please wait....";
+              }else {
+                $scope.loadStatus = true;
+                console.log(key);
+                $scope.loading = "Loading please wait....";
+                $scope.disableLeft = "disabled";
+                $scope.disabled = true;
+                var promises = {
+                    indGroup: systemLayout.getIndicatorGroup(),
 
-                      dataGroup:systemLayout.getDataElementGroup(),
-                      orgLevel:systemLayout.getOrganisationUnitsLevels(),
-                      currentSetting:systemLayout.getCurrentSystemSetting(),
-                      currentConfig:systemLayout.getCurrentConfigaration(),
-                      style:systemLayout.getSystemStyle(),
-                      startPage:systemLayout.getSystemStartPage(),
-                      userRole:systemLayout.getSystemUserRole(),
-                      orgUnits:systemLayout.getOrganisationUnits(),
-                      approvalLevel:systemLayout.getApprovalLevels(),
-                      optionCombo:systemLayout.getcategoryOptions(),
-                      apps:systemLayout.getSystemApps()
-                      }
+                    dataGroup: systemLayout.getDataElementGroup(),
+                    orgLevel: systemLayout.getOrganisationUnitsLevels(),
+                    currentSetting: systemLayout.getCurrentSystemSetting(),
+                    currentConfig: systemLayout.getCurrentConfigaration(),
+                    style: systemLayout.getSystemStyle(),
+                    startPage: systemLayout.getSystemStartPage(),
+                    userRole: systemLayout.getSystemUserRole(),
+                    orgUnits: systemLayout.getOrganisationUnits(),
+                    approvalLevel: systemLayout.getApprovalLevels(),
+                    optionCombo: systemLayout.getcategoryOptions(),
+                    apps: systemLayout.getSystemApps()
+                }
 
-        $timeout(function(){
-        $q.all(promises).then(function(data){
-            $scope.foundAssociation=systemLayout.getElementSWithOptionsForSelect(key,data.indGroup,data.dataGroup,data.orgLevel,
-                 data.currentSetting,data.currentConfig,data.style,data.startPage,data.userRole,data.orgUnits,data.approvalLevel,data.optionCombo,data.apps);
-               console.log($scope.foundAssociation);
-            });
-        $location.path(key);
-        $scope.heading=key.substring('/'.length)+" Settings";
-        $scope.loadStatus=false;
-            },2000)
+                $timeout(function () {
+                    $q.all(promises).then(function (data) {
+                        $scope.foundAssociation = systemLayout.getElementSWithOptionsForSelect(key, data.indGroup, data.dataGroup, data.orgLevel,
+                            data.currentSetting, data.currentConfig, data.style, data.startPage, data.userRole, data.orgUnits, data.approvalLevel, data.optionCombo, data.apps);
+                        console.log($scope.foundAssociation);
+                    });
+                    $location.path(key);
+                    $scope.heading = key.substring('/'.length) + " Settings";
+                    $scope.loadStatus = false;
+                    $scope.disableLeft = "";
+                    $scope.disabled = false;
+                }, 2000)
 
-
+            }
         }
         //$scope.menuID='/'+$routeParams.menuID;
         //$scope.showCurrentTriggeredMenu('/General');

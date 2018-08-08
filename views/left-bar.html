@@ -6,7 +6,7 @@
 <div class="left-bar-menu" ng-controller="LeftBarMenuController" ng-repeat="menu in systemSettingMenu">
     <ul class="nav nav-pills nav-stacked"  ng-repeat="(key,val) in menu">
 
-        <li><a href ng-click="showCurrentTriggeredMenu('/'+key)" ng-init='General' style="color: #000000" ng-class="{'text-info':linkValue=='/'+key}">{{key}}</a></li>
+        <li class="{{disableLeft}}"><a href ng-click="showCurrentTriggeredMenu('/'+key)" ng-disabled="disabled" ng-init='General' style="color: #000000"  >{{key}}</a></li>
 
     </ul>
 </div>
